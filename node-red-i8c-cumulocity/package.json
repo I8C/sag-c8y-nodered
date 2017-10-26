@@ -1,0 +1,24 @@
+{
+  "name": "node-red-i8c-cumulocity",
+  "version": "1.0.0",
+  "description": "node-red package for cumulocity by i8c",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cumulocity",
+    "i8c"
+  ],
+  "author": "stefan.dewandeleir@i8c.be",
+  "license": "Apache-2.0",
+  "dependencies":{
+	"node-rest-client":"3.1.0"
+  },
+  "node-red" : {
+        "nodes": {
+			"cumulocity-tenant": "cumulocity_tenant/cumulocity_tenant.js",
+            "register-device": "register_device/register_device.js"
+        }
+    }
+}

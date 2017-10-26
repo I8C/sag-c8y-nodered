@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    RED.nodes.registerType('register-device',{
+        category: 'cumulocity',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			tenant: {value:"", type:"cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "icons/cumulocity.png",
+        label: function() {
+            return this.name||"register-device";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="register-device-credentials">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="register-device-credentials">
+    <p>A node that registers device credentials on your cumulocity tenant</p>
+</script>
