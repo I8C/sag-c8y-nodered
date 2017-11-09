@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('api-send-measure',{
+        category: 'cumulocity_api',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			measurement: {value:""},
+			tenant: {value:"", type:"config-cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cumulocity.png",
+		paletteLabel : "send measurement",			
+        label: function() {
+            return this.name||"send measure";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="api-send-measure">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+        <label for="node-input-measurement"><i class="icon-tag"></i> Measurement</label>
+        <input type="text" id="node-input-measurement" placeholder="Measurement">
+    </div>
+	 <div class="form-row">
+        <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
+        <input type="text" id="node-input-tenant" placeholder="Tenant">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="api-send-measure">
+    <p>A node that puts a status of an operation control</p>
+</script>

@@ -156,6 +156,20 @@ module.exports = function(RED) {
 			});
 		};
 		
+		// SEND MEASUREMENT
+		this.send_measure = function (node, input_params, input_data, callback) {
+			console.log("send_measure");
+			var args = {data: parseInputData(input_data),headers: { "Content-Type": "application/vnd.com.nsn.cumulocity.measurement+json" }};
+			this.client.post(node.tenant.basepath + "/measurement/measurements", args, function (data, response) {
+				callback({data:data, statusCode: response.statusCode, statusMessage: response.statusMessage, location:response.headers.location});
+			}).on('error', function (err) {
+				node.error('something went wrong on the request', err.request.options);
+			});
+			this.client.on('error', function (err) {
+				node.error('Something went wrong on the client', err);
+			});
+		};
+		
     }
 	
 	RED.nodes.registerType("config-cumulocity-tenant",ConfigCumulocityTenantNode,{
