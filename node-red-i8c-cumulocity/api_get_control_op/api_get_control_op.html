@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    RED.nodes.registerType('api-get-control-op',{
+        category: 'cumulocity_api',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			managedObjectId: {value:""},
+			status: {value:""},
+			tenant: {value:"", type:"config-cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cumulocity.png",
+		paletteLabel : "get control op",			
+        label: function() {
+            return this.name||"get ctrl op";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="api-get-control-op">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+        <label for="node-input-notifications"><i class="icon-tag"></i> Notifications</label>
+        <input type="text" id="node-input-notifications" placeholder="Notifications">
+    </div>
+	 <div class="form-row">
+        <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
+        <input type="text" id="node-input-tenant" placeholder="Tenant">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="api-get-control-op">
+    <p>A node that creates the device in the inventory of your cumulocity tenant</p>
+</script>

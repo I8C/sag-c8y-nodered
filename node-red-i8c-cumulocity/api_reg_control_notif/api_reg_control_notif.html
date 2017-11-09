@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('api-reg-control-notif',{
+        category: 'cumulocity_api',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			notifications: {value:""},
+			tenant: {value:"", type:"config-cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cumulocity.png",
+		paletteLabel : "register control notif",			
+        label: function() {
+            return this.name||"reg ctrl notif";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="api-reg-control-notif">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+        <label for="node-input-notifications"><i class="icon-tag"></i> Notifications</label>
+        <input type="text" id="node-input-notifications" placeholder="Notifications">
+    </div>
+	 <div class="form-row">
+        <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
+        <input type="text" id="node-input-tenant" placeholder="Tenant">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="api-reg-control-notif">
+    <p>A node that creates the device in the inventory of your cumulocity tenant</p>
+</script>

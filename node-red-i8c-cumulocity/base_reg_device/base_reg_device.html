@@ -1,0 +1,47 @@
+<script type="text/javascript">
+    RED.nodes.registerType('base-reg-device',{
+        category: 'cumulocity_base',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			deviceId: {value:""},
+			deviceIdType: {value:""},
+			managedObject: {value:""},
+			tenant: {value:"", type:"config-cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cumulocity.png",
+		paletteLabel : "check & register device",			
+        label: function() {
+            return this.name||"register device";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="base-reg-device">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+        <label for="node-input-deviceId"><i class="icon-tag"></i> Device Id</label>
+        <input type="text" id="node-input-deviceId" placeholder="Device Id">
+    </div>
+	<div class="form-row">
+        <label for="node-input-deviceIdType"><i class="icon-tag"></i> Device IdType</label>
+        <input type="text" id="node-input-deviceIdType" placeholder="Device IdType">
+    </div>
+	<div class="form-row">
+        <label for="node-input-managedObject"><i class="icon-tag"></i> ManagedObject</label>
+        <input type="text" id="node-input-managedObject" placeholder="ManagedObject">
+    </div>
+	 <div class="form-row">
+        <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
+        <input type="text" id="node-input-tenant" placeholder="Tenant">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="base-reg-device">
+    <p>A node that registers the device id in your cumulocity tenant</p>
+</script>

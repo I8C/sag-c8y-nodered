@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    RED.nodes.registerType('api-register-device',{
+        category: 'cumulocity_api',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			managedObjectId: {value:""},
+			externalId: {value:""},
+			tenant: {value:"", type:"config-cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cumulocity.png",
+		paletteLabel : "register device",			
+        label: function() {
+            return this.name||"register device";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="api-register-device">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+        <label for="node-input-managedObjectId"><i class="icon-tag"></i> ManagedObject Id</label>
+        <input type="text" id="node-input-managedObjectId" placeholder="ManagedObject Id">
+    </div>
+	<div class="form-row">
+        <label for="node-input-externalId"><i class="icon-tag"></i> External Id</label>
+        <input type="text" id="node-input-externalId" placeholder="External Id">
+    </div>	
+	 <div class="form-row">
+        <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
+        <input type="text" id="node-input-tenant" placeholder="Tenant">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="api-register-device">
+    <p>A node that registers the device id in your cumulocity tenant</p>
+</script>

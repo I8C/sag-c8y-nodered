@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('api-create-inventory',{
+        category: 'cumulocity_api',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			tenant: {value:"", type:"config-cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cumulocity.png",
+		paletteLabel : "create in inventory",
+        label: function() {
+            return this.name||"create in inventory";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="api-create-inventory">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	 <div class="form-row">
+        <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
+        <input type="text" id="node-input-tenant" placeholder="Tenant">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="api-create-inventory">
+    <p>A node that creates the device in the inventory of your cumulocity tenant</p>
+</script>

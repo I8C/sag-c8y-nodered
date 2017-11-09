@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    RED.nodes.registerType('api-create-child',{
+        category: 'cumulocity_api',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			parentManagedObjectId: {value:""},
+			managedObjectReference: {value:""},
+			tenant: {value:"", type:"config-cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cumulocity.png",
+		paletteLabel : "register child device",			
+        label: function() {
+            return this.name||"register child device";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="api-create-child">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+        <label for="node-input-parentManagedObjectId"><i class="icon-tag"></i> Parent ManagedObject Id</label>
+        <input type="text" id="node-input-parentManagedObjectId" placeholder="Parent ManagedObject Id">
+    </div>
+	<div class="form-row">
+        <label for="node-input-managedObjectReference"><i class="icon-tag"></i> Child ManagedObject Reference</label>
+        <input type="text" id="node-input-managedObjectReference" placeholder="Child ManagedObject Reference">
+    </div>
+	 <div class="form-row">
+        <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
+        <input type="text" id="node-input-tenant" placeholder="Tenant">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="api-create-child">
+    <p>A node that registers the device id in your cumulocity tenant</p>
+</script>

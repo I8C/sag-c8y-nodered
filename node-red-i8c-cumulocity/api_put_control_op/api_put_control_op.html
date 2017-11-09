@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    RED.nodes.registerType('api-put-control-op',{
+        category: 'cumulocity_api',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			operationId: {value:""},
+			operation: {value:""},
+			tenant: {value:"", type:"config-cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cumulocity.png",
+		paletteLabel : "put control op",			
+        label: function() {
+            return this.name||"put ctrl op";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="api-put-control-op">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+        <label for="node-input-operationId"><i class="icon-tag"></i> OperationId</label>
+        <input type="text" id="node-input-operationId" placeholder="OperationId">
+    </div>
+	<div class="form-row">
+        <label for="node-input-operation"><i class="icon-tag"></i> Operation</label>
+        <input type="text" id="node-input-operation" placeholder="Operation">
+    </div>
+	 <div class="form-row">
+        <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
+        <input type="text" id="node-input-tenant" placeholder="Tenant">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="api-put-control-op">
+    <p>A node that puts a status of an operation control</p>
+</script>

@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('api-check-registration',{
+        category: 'cumulocity_api',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+			deviceId: {},
+			deviceIdType: {},
+			tenant: {value:"", type:"config-cumulocity-tenant"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cumulocity.png",
+        label: function() {
+            return this.name||"check registration";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="api-check-registration">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+        <label for="node-input-deviceId"><i class="icon-tag"></i> Id</label>
+        <input type="text" id="node-input-deviceId" placeholder="Id">
+    </div>
+	<div class="form-row">
+        <label for="node-input-deviceIdType"><i class="icon-tag"></i> Id Type</label>
+        <input type="text" id="node-input-deviceIdType" placeholder="Id Type">
+    </div>
+	 <div class="form-row">
+        <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
+        <input type="text" id="node-input-tenant" placeholder="Tenant">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="api-check-registration">
+    <p>A node that checks if the device is registered on your cumulocity tenant</p>
+</script>

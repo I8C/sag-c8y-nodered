@@ -1,2 +1,6 @@
-npm install /usr/cumulocity/node-red-i8c-cumulocity/
+# run docker with node-red folder in volume
 docker run -it -p 1880:1880 -v ~/.node-red:/data -v ~/cumulocity:/usr/cumulocity --name mynodered nodered/node-red-docker
+# run docker without node-red folder in volume
+docker run -it -p 1880:1880 -v ~/cumulocity:/usr/cumulocity --name mynodered nodered/node-red-docker
+# build inside docker and restart
+docker exec -u root -it mynodered npm install /usr/cumulocity/node-red-i8c-cumulocity/ && docker restart mynodered
