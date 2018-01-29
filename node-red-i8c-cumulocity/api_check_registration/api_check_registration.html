@@ -39,3 +39,41 @@
 <script type="text/x-red" data-help-name="api-check-registration">
     <p>A node that checks if the device is registered on your cumulocity tenant</p>
 </script>
+
+<h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">Name <span class="property-type">string</span></dt>
+        <dd> Name for this node.</dd>
+		<dt class="optional">deviceId <span class="property-type">string</span></dt>
+        <dd> The id of the device. Could also come from <code>msg.deviceId</code> </dd>
+		<dt class="optional">deviceIdType <span class="property-type">string</span></dt>
+        <dd> The type of id send as deviceId. Could also come from <code>msg.deviceIdType</code> </dd>
+		<dt>Tenant <span class="property-type">configuration</span></dt>
+        <dd> Tenant Configuration Object that contains the connection information for this tenant </dd>		
+    </dl>
+
+ <h3>Outputs</h3>
+	<dl class="message-properties">
+		<dt>managedObject <span class="property-type">json</span></dt>
+		<dd>The managedObject that was provided as <code>msg.managedObject</code> (if any)</dd>
+		<dt>data <span class="property-type">json</span></dt>
+		<dd>The response of the call (if any)</dd>
+		<dt>statusCode <span class="property-type">string</span></dt>
+		<dd>The statusCode of the call</dd>
+		<dt>statusMessage <span class="property-type">string</span></dt>
+		<dd>The statusMessage of the call</dd>
+		<dt>location <span class="property-type">json</span></dt>
+		<dd>The reference location response of the call (if any)</dd>
+	</dl>
+
+<h3>Details</h3>
+    <p>This node will call the get external id of an object on the REST API. 
+	To know what data to send and what response you get from the operation see the references</p>
+
+<h3>References</h3>
+    <ul>
+		<li><a href="https://www.cumulocity.com/guides/rest/device-integration/#step-1-check-if-the-device-is-already-registered">Check device registration</a> - Cumulocity docs</li>
+	    <li><a href="https://github.com/i8c">GitHub Project</a> - i8c-c8y-nodered</li>
+        <li><a href="https://www.cumulocity.com/guides/rest/device-integration/">Cumulocity REST API docs</a></li>
+    </ul>
+</script>

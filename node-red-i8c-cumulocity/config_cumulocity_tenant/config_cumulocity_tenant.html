@@ -33,3 +33,29 @@
 		<input type="password" id="node-config-input-password">
 	 </div>
 </script>
+
+<script type="text/x-red" data-help-name="config-cumulocity-tenant">
+<p>This is a reusable configuration object holding your tenant connection data</p>
+
+<h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>Host <span class="property-type">ex. [tenant].cumulocity.com</span></dt>
+        <dd> the host of your cumulocity tenant </dd>
+        <dt>Port <span class="property-type">ex. 443</span></dt>
+        <dd> the port on which to connect to </dd>
+		<dt>Username <span class="property-type">String</span></dt>
+        <dd> the username for this device </dd>
+        <dt>Password <span class="property-type">String</span></dt>
+        <dd> the password for this device </dd>
+    </dl>
+
+<h3>Details</h3>
+    <p>These connection parameters are used by nodes that have tenant configuration as input.
+	This node also contains all the calls to the tenant, the onther cumulocity nodes will use the functionality within this node.</p>
+
+<h3>References</h3>
+    <ul>
+	    <li><a href="https://github.com/i8c">GitHub Project</a> - i8c-c8y-nodered</li>
+        <li><a href="https://www.cumulocity.com/guides/rest/device-integration/">Cumulocity REST API docs</a></li>
+    </ul>
+</script>

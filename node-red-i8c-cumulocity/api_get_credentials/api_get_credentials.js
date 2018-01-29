@@ -20,7 +20,6 @@ module.exports = function(RED) {
 		node.tenant = RED.nodes.getNode(config.tenant);
 		// input
         node.on('input', function(msg_in) {
-			var deviceCredentials = getFromConfigOrMsg(node, config, msg_in, 'deviceCredentials');
 			if (node.tenant) {
 				node.tenant.get_credentials(node, null, msg_in.input_data, function(msg_out){
 					msg_out.managedObject = msg_in.managedObject;

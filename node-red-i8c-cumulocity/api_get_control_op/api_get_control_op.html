@@ -24,8 +24,12 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
 	<div class="form-row">
-        <label for="node-input-notifications"><i class="icon-tag"></i> Notifications</label>
-        <input type="text" id="node-input-notifications" placeholder="Notifications">
+        <label for="node-input-managedObjectId"><i class="icon-tag"></i> ManagedObjectId</label>
+        <input type="text" id="node-input-managedObjectId" placeholder="ManagedObjectId">
+    </div>
+	<div class="form-row">
+        <label for="node-input-status"><i class="icon-tag"></i> Status</label>
+        <input type="text" id="node-input-status" placeholder="Status">
     </div>
 	 <div class="form-row">
         <label for="node-input-tenant"><i class="icon-tag"></i> Tenant</label>
@@ -34,5 +38,39 @@
 </script>
 
 <script type="text/x-red" data-help-name="api-get-control-op">
-    <p>A node that creates the device in the inventory of your cumulocity tenant</p>
+<p>This node calls the get control-operation operation</p>
+
+<h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">Name <span class="property-type">string</span></dt>
+        <dd> Name for this node.</dd>
+		<dt class="optional">ManagedObjectID <span class="property-type">string</span></dt>
+        <dd> The Id that is registered for this managed object (device). Could also come from <code>msg.managedObjectId</code> </dd>
+		<dt class="optional">Status <span class="property-type">string</span></dt>
+        <dd> The status that the operation should have. Could also come from <code>msg.status</code> </dd>		
+		<dt>Tenant <span class="property-type">configuration</span></dt>
+        <dd> Tenant Configuration Object that contains the connection information for this tenant </dd>
+    </dl>
+
+ <h3>Outputs</h3>
+	<dl class="message-properties">
+		<dt>data <span class="property-type">json</span></dt>
+		<dd>The response of the call (if any)</dd>
+		<dt>statusCode <span class="property-type">string</span></dt>
+		<dd>The statusCode of the call</dd>
+		<dt>statusMessage <span class="property-type">string</span></dt>
+		<dd>The statusMessage of the call</dd>
+		<dt>location <span class="property-type">json</span></dt>
+		<dd>The reference location response of the call (if any)</dd>
+	</dl>
+
+<h3>Details</h3>
+    <p>This node will call the get control-operation operation on the REST API.</p>
+
+<h3>References</h3>
+    <ul>
+		<li><a href="https://www.cumulocity.com/guides/rest/device-integration/#step-6-finish-operations-and-subscribe">Control Operations</a> - Cumulocity docs</li>
+	    <li><a href="https://github.com/i8c">GitHub Project</a> - i8c-c8y-nodered</li>
+        <li><a href="https://www.cumulocity.com/guides/rest/device-integration/">Cumulocity REST API docs</a></li>
+    </ul>
 </script>

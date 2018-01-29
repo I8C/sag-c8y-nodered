@@ -43,5 +43,41 @@
 </script>
 
 <script type="text/x-red" data-help-name="base-reg-device">
-    <p>A node that registers the device id in your cumulocity tenant</p>
+<p>This component will register the device if it is not yet registered</p>
+
+<h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">Name <span class="property-type">string</span></dt>
+        <dd> Name for this node.</dd>
+        <dt class="optional">Device Id <span class="property-type">string</span></dt>
+        <dd> Id for this device. Could also come from <code>msg.deviceId</code> </dd>
+		<dt class="optional">Device IdType <span class="property-type">string</span></dt>
+        <dd> Id type for this device. Could also come from <code>msg.deviceIdType</code> </dd>
+		<dt class="optional">ManagedObject <span class="property-type">json</span></dt>
+        <dd> Managed Object that contains the information for this device. Could also come from <code>msg.managedObject</code> </dd>
+		<dt>Tenant <span class="property-type">configuration</span></dt>
+        <dd> Tenant Configuration Object that contains the connection information for this tenant </dd>
+    </dl>
+
+ <h3>Outputs</h3>
+	<dl class="message-properties">
+		<dt>id <span class="property-type">string</span></dt>
+		<dd>The id of the registered managed object</dd>
+	</dl>
+
+<h3>Details</h3>
+    <p>This node will check if the node is already registered based on the deviceId and the deviceIdType.
+	If it is, it will update the definition with the data provided in the managedObject.
+	If it is not it will create the device in the inventory and register it.
+	You will get backt the id of the registered device, which you can use in further calls
+	
+	The Managed Object is a JSON data structure which contains information on the device. Typically you will create a template, which you will fill up with variables and set to <code>msg.managedObject</code>
+	See the references for information on how to structure the managedObject.</p>
+
+<h3>References</h3>
+    <ul>
+		<li><a href="https://www.cumulocity.com/guides/reference/inventory#managed-object">Managed Object</a> - Cumulocity docs</li>
+	    <li><a href="https://github.com/i8c">GitHub Project</a> - i8c-c8y-nodered</li>
+        <li><a href="https://www.cumulocity.com/guides/rest/device-integration/">Cumulocity REST API docs</a></li>
+    </ul>
 </script>

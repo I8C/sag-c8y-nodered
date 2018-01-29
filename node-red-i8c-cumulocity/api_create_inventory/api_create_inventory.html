@@ -28,5 +28,40 @@
 </script>
 
 <script type="text/x-red" data-help-name="api-create-inventory">
-    <p>A node that creates the device in the inventory of your cumulocity tenant</p>
+<p>A node that creates the device in the inventory of your cumulocity tenant</p>
+
+<h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">Name <span class="property-type">string</span></dt>
+        <dd> Name for this node.</dd>
+		<dt>Tenant <span class="property-type">configuration</span></dt>
+        <dd> Tenant Configuration Object that contains the connection information for this tenant </dd>
+        <dt><code>msg.payload</code> <span class="property-type">json</span></dt>
+        <dd> Managed object  to register</dd>		
+    </dl>
+
+ <h3>Outputs</h3>
+	<dl class="message-properties">
+		<dt>managedObject <span class="property-type">json</span></dt>
+		<dd>The managedObject that was provided as <code>msg.managedObject</code> (if any)</dd>
+		<dt>data <span class="property-type">json</span></dt>
+		<dd>The response of the call (if any)</dd>
+		<dt>statusCode <span class="property-type">string</span></dt>
+		<dd>The statusCode of the call</dd>
+		<dt>statusMessage <span class="property-type">string</span></dt>
+		<dd>The statusMessage of the call</dd>
+		<dt>location <span class="property-type">json</span></dt>
+		<dd>The reference location response of the call (if any)</dd>
+	</dl>
+
+<h3>Details</h3>
+    <p>This node will call the create managed object operation on the REST API. 
+	To know what data to send and what response you get from the operation see the references</p>
+
+<h3>References</h3>
+    <ul>
+		<li><a href="https://www.cumulocity.com/guides/rest/device-integration/#step-2-create-the-device-in-the-inventory">Create device in registry</a> - Cumulocity docs</li>
+	    <li><a href="https://github.com/i8c">GitHub Project</a> - i8c-c8y-nodered</li>
+        <li><a href="https://www.cumulocity.com/guides/rest/device-integration/">Cumulocity REST API docs</a></li>
+    </ul>
 </script>
