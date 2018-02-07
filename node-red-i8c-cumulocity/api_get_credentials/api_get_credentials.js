@@ -1,3 +1,9 @@
+/*!
+ * node-red-i8c-cumulocity v1.0.0 (https://github.com/i8c)
+ * Copyright (C) 2018 i8c NV
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
 module.exports = function(RED) {
 	
 	function getFromConfigOrMsg(node,config, msg, name){
