@@ -1,0 +1,223 @@
+[
+    {
+        "id": "4af3666b.fbf8c8",
+        "type": "tab",
+        "label": "Register device",
+        "disabled": false,
+        "info": "This flow registers this device on Cumulocity"
+    },
+    {
+        "id": "f671e4d3.f4c888",
+        "type": "subflow",
+        "name": "get device properties",
+        "info": "",
+        "in": [
+            {
+                "x": 128.00000762939453,
+                "y": 124.39996910095215,
+                "wires": [
+                    {
+                        "id": "5153b935.40b048"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 825.0000152587891,
+                "y": 120.39998054504395,
+                "wires": [
+                    {
+                        "id": "d25766b2.4ae5e8",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "2ec4fdfd.91d702",
+        "type": "config-cumulocity-tenant",
+        "z": "",
+        "host": "mytenant.cumulocity.com",
+        "port": "443"
+    },
+    {
+        "id": "760fe263.7c445c",
+        "type": "inject",
+        "z": "4af3666b.fbf8c8",
+        "name": "Start",
+        "topic": "",
+        "payload": "{\"start\":\"now\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 115.10000610351562,
+        "y": 115.4000015258789,
+        "wires": [
+            [
+                "11bb249c.1bb79b"
+            ]
+        ]
+    },
+    {
+        "id": "e86db99e.75bb08",
+        "type": "base-reg-device",
+        "z": "4af3666b.fbf8c8",
+        "name": "",
+        "deviceId": "",
+        "deviceIdType": "i8c_DeviceId",
+        "managedObject": "",
+        "tenant": "2ec4fdfd.91d702",
+        "x": 318.1001205444336,
+        "y": 207.58753204345703,
+        "wires": [
+            [
+                "391170e3.6e908"
+            ]
+        ]
+    },
+    {
+        "id": "4f5cfd8.6aff204",
+        "type": "template",
+        "z": "4af3666b.fbf8c8",
+        "name": "set ManagedObject",
+        "field": "managedObject",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"name\": \"My mobile device\",\n    \"type\": \"i8c_mobile_android\",\n    \"c8y_IsDevice\": {},\n    \"com_cumulocity_model_Agent\": {},\n    \"c8y_SupportedOperations\": [ \"c8y_Restart\" ],\n    \"c8y_Hardware\": {\n        \"model\": \"{{deviceType}}\",\n        \"serialNumber\": \"{{deviceId}}\"\n    }\n}",
+        "output": "json",
+        "x": 528.1000175476074,
+        "y": 115.80000495910645,
+        "wires": [
+            [
+                "e86db99e.75bb08"
+            ]
+        ]
+    },
+    {
+        "id": "5153b935.40b048",
+        "type": "exec",
+        "z": "f671e4d3.f4c888",
+        "command": "cat /system/build.prop",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 308.00000762939453,
+        "y": 124.39996910095215,
+        "wires": [
+            [
+                "525fe026.ef8a6"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "391170e3.6e908",
+        "type": "debug",
+        "z": "4af3666b.fbf8c8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 489.9000244140625,
+        "y": 206.89991569519043,
+        "wires": []
+    },
+    {
+        "id": "525fe026.ef8a6",
+        "type": "function",
+        "z": "f671e4d3.f4c888",
+        "name": "extract",
+        "func": "var lookup=[\n{\"prop\":\"ro.product.device\",\"msg\":\"deviceType\"},\n{\"prop\":\"ro.semc.product.name\",\"msg\":\"deviceProduct\"}\n]\nvar items = msg.payload.split(/\\r?\\n/);\nfor (let i = 0; i < items.length; i++) {\n  var line = items[i];\n  for (let j = 0; j < lookup.length; j++) {\n    var look = lookup[j];\n    if(line.indexOf(look.prop)===0){\n        msg[look.msg]=line.slice(look.prop.length+1,line.length);\n    }\n  }\n}\nmsg.payload=null;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 504.1001167297363,
+        "y": 110.80000686645508,
+        "wires": [
+            [
+                "2d9092e0.fafdee"
+            ]
+        ]
+    },
+    {
+        "id": "11bb249c.1bb79b",
+        "type": "subflow:f671e4d3.f4c888",
+        "z": "4af3666b.fbf8c8",
+        "name": "get device information",
+        "x": 309.5500144958496,
+        "y": 115.60001182556152,
+        "wires": [
+            [
+                "4f5cfd8.6aff204"
+            ]
+        ]
+    },
+    {
+        "id": "2d9092e0.fafdee",
+        "type": "termux-telephony-deviceinfo",
+        "z": "f671e4d3.f4c888",
+        "name": "",
+        "topic": "",
+        "x": 380.00001525878906,
+        "y": 213.4000005722046,
+        "wires": [
+            [
+                "39b6fae.fae9906"
+            ]
+        ]
+    },
+    {
+        "id": "39b6fae.fae9906",
+        "type": "function",
+        "z": "f671e4d3.f4c888",
+        "name": "extract",
+        "func": "msg.deviceId=msg.payload.device_id\nmsg.payload=null;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540.0000228881836,
+        "y": 213.4000015258789,
+        "wires": [
+            [
+                "41788323.858f1c"
+            ]
+        ]
+    },
+    {
+        "id": "41788323.858f1c",
+        "type": "termux-wifi-connectioninfo",
+        "z": "f671e4d3.f4c888",
+        "name": "",
+        "topic": "",
+        "x": 475,
+        "y": 290.3999938964844,
+        "wires": [
+            [
+                "d25766b2.4ae5e8"
+            ]
+        ]
+    },
+    {
+        "id": "d25766b2.4ae5e8",
+        "type": "function",
+        "z": "f671e4d3.f4c888",
+        "name": "extract",
+        "func": "msg.deviceMac=msg.payload.mac_address;\nmsg.deviceIp=msg.payload.ip;\nmsg.payload=null;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 633,
+        "y": 295.3999938964844,
+        "wires": [
+            []
+        ]
+    }
+]
