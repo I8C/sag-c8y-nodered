@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-i8c-cumulocity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "node-red package for cumulocity by i8c",
   "url": "https://github.com/I8C",
   "main": "index.js",
@@ -8,30 +8,30 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-	"node-red",
+    "node-red",
     "cumulocity",
     "i8c"
   ],
   "author": "stefan.dewandeleir@i8c.be",
   "license": "Apache-2.0",
-  "dependencies":{
-	"node-rest-client":"3.1.0"
+  "dependencies": {
+    "node-rest-client": "3.1.0"
   },
-  "node-red" : {
-        "nodes": {
-			"config-cumulocity-tenant": "config_cumulocity_tenant/config_cumulocity_tenant.js",
-            "api-check-registration": "api_check_registration/api_check_registration.js",
-			"api-create-inventory": "api_create_inventory/api_create_inventory.js",
-			"api-update-inventory": "api_update_inventory/api_update_inventory.js",
-			"api-register-device": "api_register_device/api_register_device.js",
-			"api-get-credentials" : "api_get_credentials/api_get_credentials.js",
-			"api-create-child" : "api_create_child/api_create_child.js",
-			"api-reg-control-notif" : "api_reg_control_notif/api_reg_control_notif.js",
-			"api-get-control-op" : "api_get_control_op/api_get_control_op.js",
-			"api-put-control-op" : "api_put_control_op/api_put_control_op.js",
-			"api-send-measure" : "api_send_measurement/api_send_measurement.js",
-			"base-reg-device": "base_reg_device/base_reg_device.js",
-			"base-reg-control": "base_reg_control/base_reg_control.js"
-        }
+  "node-red": {
+    "nodes": {
+      "config-cumulocity-tenant": "config_cumulocity_tenant/config_cumulocity_tenant.js",
+      "api-check-registration": "api_check_registration/api_check_registration.js",
+      "api-create-inventory": "api_create_inventory/api_create_inventory.js",
+      "api-update-inventory": "api_update_inventory/api_update_inventory.js",
+      "api-register-device": "api_register_device/api_register_device.js",
+      "api-get-credentials": "api_get_credentials/api_get_credentials.js",
+      "api-create-child": "api_create_child/api_create_child.js",
+      "api-reg-control-notif": "api_reg_control_notif/api_reg_control_notif.js",
+      "api-get-control-op": "api_get_control_op/api_get_control_op.js",
+      "api-put-control-op": "api_put_control_op/api_put_control_op.js",
+      "api-send-measure": "api_send_measurement/api_send_measurement.js",
+      "base-reg-device": "base_reg_device/base_reg_device.js",
+      "base-reg-control": "base_reg_control/base_reg_control.js"
     }
+  }
 }
