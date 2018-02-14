@@ -22,4 +22,4 @@ Now your good to go. In the pallette you should find the Cumulocity specific fun
 
 Android Quickstart
 -------------
-Follow our blog on [i8c.com](http://www.i8c.be/) and check examples.
+Follow our blog on [i8c.be](http://www.i8c.be/) and check examples.
